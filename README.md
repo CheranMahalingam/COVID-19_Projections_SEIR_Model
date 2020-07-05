@@ -17,14 +17,20 @@ Infected (people who can spread the disease), Recovered (people who are immune).
 The population of each group can be approximated using the following differential 
 equations:
 
+<p align="center">
+  <img src="images/SEIR_differential_equations.png">
+</p>
+
 # Definitions
 Basic Reproduction Number (R0): Measures transmission potential by representing how many 
 additional cases are caused by one individual when no restrictions are placed. When R0 > 
 1 the disease will be able to propagate and measures must be placed to slow down its 
 spread.
+
 Effective Reproduction Number (Rt): Measures transmission potential when there are 
 individuals who are immune or intervention measures in place to reduce the spread. Once 
-Rt < 1 the disease will struggle to propagate.
+  Rt < 1 the disease will struggle to propagate.
+
 # Future Updates
 1. Improvement of user interface
 2. Improved accuracy in approximations
