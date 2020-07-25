@@ -24,6 +24,8 @@
 5. To run the web application use,
 
    ` npm start `
+   
+6. The program will open on port 3000 and is available at http://localhost:3000
 
 # SEIR Model
 The model splits the population into four groups. Susceptible (people who are not immune 
