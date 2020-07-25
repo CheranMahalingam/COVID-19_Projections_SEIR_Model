@@ -1,5 +1,0 @@
-matplotlib==3.2.2
-scipy==1.5.0
-w3lib==1.22.0
-numpy==1.19.0
-Scrapy==2.1.0

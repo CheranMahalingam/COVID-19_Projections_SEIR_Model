@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Scrapy settings for COVID_Webscraper project
+# Scrapy settings for Covid_Webscraper project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +7,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'COVID_Webscraper'
+BOT_NAME = 'Covid_Webscraper'
 
-SPIDER_MODULES = ['COVID_Webscraper.spiders']
-NEWSPIDER_MODULE = 'COVID_Webscraper.spiders'
+SPIDER_MODULES = ['Covid_Webscraper.spiders']
+NEWSPIDER_MODULE = 'Covid_Webscraper.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'COVID_Webscraper (+http://www.yourdomain.com)'
+#USER_AGENT = 'Covid_Webscraper (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -39,33 +37,33 @@ ROBOTSTXT_OBEY = True
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
+# DEFAULT_REQUEST_HEADERS = {
 #   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 #   'Accept-Language': 'en',
-#}
+# }
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'COVID_Webscraper.middlewares.CovidWebscraperSpiderMiddleware': 543,
-#}
+# SPIDER_MIDDLEWARES = {
+#    'Covid_Webscraper.middlewares.CovidWebscraperSpiderMiddleware': 543,
+# }
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'COVID_Webscraper.middlewares.CovidWebscraperDownloaderMiddleware': 543,
-#}
+# DOWNLOADER_MIDDLEWARES = {
+#    'Covid_Webscraper.middlewares.CovidWebscraperDownloaderMiddleware': 543,
+# }
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
-#EXTENSIONS = {
+# EXTENSIONS = {
 #    'scrapy.extensions.telnet.TelnetConsole': None,
-#}
+# }
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'COVID_Webscraper.pipelines.CovidWebscraperPipeline': 300,
+    'Covid_Webscraper.pipelines.CovidWebscraperPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

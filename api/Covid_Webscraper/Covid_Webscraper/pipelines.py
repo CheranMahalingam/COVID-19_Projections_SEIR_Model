@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Define your item pipelines here
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
@@ -7,8 +5,9 @@
 
 import sqlite3
 
-
 # Stores data in a database
+
+
 class CovidWebscraperPipeline(object):
 
     # Creates connection to database and creates a table
@@ -24,7 +23,7 @@ class CovidWebscraperPipeline(object):
     # Creates a table to store data and removes table if it already exists
     def create_table(self):
         self.curr.execute("""DROP TABLE IF EXISTS cases_tb""")
-        self.curr.execute("""create table cases_tb(
+        self.curr.execute("""CREATE TABLE cases_tb(
                         country_name text,
                         total_recoveries integer,
                         total_active_cases integer,
@@ -38,7 +37,7 @@ class CovidWebscraperPipeline(object):
 
     # Inserts webscraped items into the database
     def stored_db(self, item):
-        self.curr.execute("""insert into cases_tb values (?, ?, ?, ?)""", (
+        self.curr.execute("""INSERT INTO cases_tb VALUES (?, ?, ?, ?)""", (
             item['country_name'][0],
             item['total_recoveries'][0],
             item['total_active_cases'][0],

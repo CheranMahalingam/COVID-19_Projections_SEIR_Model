@@ -1,21 +1,26 @@
 import scrapy
 from scrapy.loader import ItemLoader
-from COVID_Webscraper.items import CovidWebscraperItem
+try:
+    from Covid_Webscraper.items import CovidWebscraperItem
+except:
+    from Covid_Webscraper.Covid_Webscraper.items import CovidWebscraperItem
+
 
 # A spider that crawls the worldometers website
-class CovidSpider(scrapy.Spider):
-    
+class CovidWebscraperSpider(scrapy.Spider):
+
     name = 'cases'
     allowed_domains = ['www.worldometers.info/coronavirus/']
     start_urls = ['https://www.worldometers.info/coronavirus/']
 
     # Uses xml paths to recover current country cases, recoveries, and population
+
     def parse(self, response):
-        
+
         cases = response.xpath('//tr')[9:]
         for case in cases:
             loader = ItemLoader(item=CovidWebscraperItem(), selector=case)
-            
+
             # Stops collecting data after all countries data is collected
             if case.xpath('.//td[1]//text()').get() is None:
                 break

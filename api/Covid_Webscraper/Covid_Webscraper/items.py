@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Define here the models for your scraped items
 #
 # See documentation in:
@@ -18,15 +16,15 @@ def remove_commas(text):
 
 # Allows the data collected to be modified
 class CovidWebscraperItem(Item):
-    
+
     country_name = Field(
-        )
+    )
 
     # Recoveries contain spaces and commas when collected
     total_recoveries = Field(
         input_processor=MapCompose(remove_tags, remove_commas)
     )
-    
+
     # Active cases contain commas when large
     total_active_cases = Field(
         input_processor=MapCompose(remove_commas)

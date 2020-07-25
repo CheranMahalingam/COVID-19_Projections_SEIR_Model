@@ -45,14 +45,15 @@ def next_page():
     if clicked_country.get() == "Choose a country":
         messagebox.showerror("Error", "Select a country")
     else:
-        
+
         # Checks whether the interval is an integer
         try:
             int(intervals.get())/1
-        
+
         # Alerts user if entry is not an integer
         except:
-            messagebox.showerror("Error", "Ensure that you have entered an integer")
+            messagebox.showerror(
+                "Error", "Ensure that you have entered an integer")
 
         else:
             duration = []
@@ -74,18 +75,24 @@ def next_page():
 
                 # Labels each entry with the prompt 'Interval'
                 if condition_number == 0:
-                    Label(window, text=("Interval " + str(condition_number+1) + " (days)")).grid(columnspan=2)
+                    Label(window, text=(
+                        "Interval " + str(condition_number+1) + " (days)")).grid(columnspan=2)
                 else:
-                    Label(window, text=("Interval " + str(condition_number+1))).grid(columnspan=2)
+                    Label(window, text=("Interval " +
+                                        str(condition_number+1))).grid(columnspan=2)
 
                 # Entry and dropdown module that stores selections from user
-                Entry(window, textvariable=duration[-1]).grid(row=condition_number, column=2, columnspan=3, sticky="ew")
-                OptionMenu(window, state[-1], "Lockdown", "Vacation", "School closure", "No restrictions").grid(row=condition_number, column=5, columnspan=2, padx=3)
+                Entry(window, textvariable=duration[-1]).grid(
+                    row=condition_number, column=2, columnspan=3, sticky="ew")
+                OptionMenu(window, state[-1], "Lockdown", "Vacation", "School closure",
+                           "No restrictions").grid(row=condition_number, column=5, columnspan=2, padx=3)
 
             # Buttons to end the program or move on to producing a graph
-            finish_button = Button(window, text="Finish", command=duration_state).grid(row=int(intervals.get()), column=1, columnspan=2, sticky="ew", pady=10)
-            exit_button = Button(window, text="Exit", command=exit_program).grid(row=int(intervals.get()), column=4, columnspan=2, sticky="ew", pady=10)
-            
+            finish_button = Button(window, text="Finish", command=duration_state).grid(
+                row=int(intervals.get()), column=1, columnspan=2, sticky="ew", pady=10)
+            exit_button = Button(window, text="Exit", command=exit_program).grid(
+                row=int(intervals.get()), column=4, columnspan=2, sticky="ew", pady=10)
+
             # Increases the window size to match user inputs
             window.geometry("350x" + str(31*int(intervals.get()) + 40))
 
@@ -102,12 +109,14 @@ def duration_state():
 
         # Alerts the user if an integer is not given
         except:
-            messagebox.showerror("Error", "Ensure that you have entered integers for all entries")
+            messagebox.showerror(
+                "Error", "Ensure that you have entered integers for all entries")
             break
 
         # Alerts the user if no restriction is placed for an interval entry
         if state[entry].get() == "Restrictions":
-            messagebox.showerror("Error", "Ensure that a restriction is applied to each interval")
+            messagebox.showerror(
+                "Error", "Ensure that a restriction is applied to each interval")
             break
 
         # If all entries are valid, the program continues and the window is cleared
@@ -141,16 +150,21 @@ clicked_country.set("Choose a country")
 country_label = Label(window, text="Country:").grid()
 
 # Provides a dropdown menu to select a country from a list provided by the database
-drop = OptionMenu(window, clicked_country, *countries).grid(row=0, column=1, columnspan=4, sticky=W)
+drop = OptionMenu(window, clicked_country, *
+                  countries).grid(row=0, column=1, columnspan=4, sticky=W)
 
-interval_number_label = Label(window, text="Number of Intervals:").grid(row=1, column=0)
+interval_number_label = Label(
+    window, text="Number of Intervals:").grid(row=1, column=0)
 
 # Provides entry module to store the number of intervals used for the second window
-interval_number_entry = Entry(window, textvariable=intervals).grid(row=1, column=1, columnspan=5)
+interval_number_entry = Entry(window, textvariable=intervals).grid(
+    row=1, column=1, columnspan=5)
 
 # Allows the user to either exit the program or move to the next window
-next_button = Button(window, text="Next", command=next_page).grid(row=3, column=1, sticky="ew", pady=10)
-exit_button = Button(window, text="Exit", command=exit_program).grid(row=3, column=3, sticky="ew", pady=10)
+next_button = Button(window, text="Next", command=next_page).grid(
+    row=3, column=1, sticky="ew", pady=10)
+exit_button = Button(window, text="Exit", command=exit_program).grid(
+    row=3, column=3, sticky="ew", pady=10)
 
 # Tracks whether the user selects a country
 clicked_country.trace('w', country_click)
@@ -158,7 +172,8 @@ clicked_country.trace('w', country_click)
 window.mainloop()
 
 # Selects the data from the row from the selected country
-curr.execute("SELECT * FROM cases_tb WHERE country_name=?", (country_dropdown,))
+curr.execute("SELECT * FROM cases_tb WHERE country_name=?",
+             (country_dropdown,))
 row = curr.fetchone()
 conn.commit()
 
@@ -216,7 +231,7 @@ for graph in range(len(period)):
 
     # Stores values of time along the x-axis
     duration = np.linspace(time[graph], time[graph+1], period[graph] * 2 + 1)
-    
+
     # Stores values of population along the y-axis
     solution = odeint(differential, (susceptible_initial, exposed_initial, infected_initial, recovered_initial),
                       duration, args=(beta, SIGMA, GAMMA, POPULATION_SIZE))
@@ -253,7 +268,8 @@ for graph in range(len(period)):
 
 # Provides the R0 and Rt values in the console
 print("Basic reproduction number (R0) = " + str(REPRODUCTION_NUMBER))
-print("Effective reproduction number (Rt) = " + str("%.3f" % (REPRODUCTION_NUMBER * solution[period[-1] * 2, 0] / POPULATION_SIZE)))
+print("Effective reproduction number (Rt) = " + str("%.3f" %
+                                                    (REPRODUCTION_NUMBER * solution[period[-1] * 2, 0] / POPULATION_SIZE)))
 
 # Finds the maximum active cases and the date at which it would occur
 maximum_active_y = max(infected_population)
@@ -276,33 +292,33 @@ ax[0].grid()
 
 # Creates a zoomed plot to show the maximum infected cases
 try:
-    
+
     # Creates a plot with values to the left and right of the maximum
     # Occurs only if the maximum does not lie on an edge of the SEIR model plot
-    ax[1].plot(total_time[int(maximum_active_x*2):int((maximum_active_x + 5)*2)], 
-        infected_population[int(maximum_active_x*2):int((maximum_active_x + 5)*2)], 'b')
-    ax[1].plot(total_time[int((maximum_active_x - 5)*2):int(maximum_active_x*2 + 1)], 
-        infected_population[int((maximum_active_x - 5)*2):int(maximum_active_x*2 + 1)], 'b')
+    ax[1].plot(total_time[int(maximum_active_x*2):int((maximum_active_x + 5)*2)],
+               infected_population[int(maximum_active_x*2):int((maximum_active_x + 5)*2)], 'b')
+    ax[1].plot(total_time[int((maximum_active_x - 5)*2):int(maximum_active_x*2 + 1)],
+               infected_population[int((maximum_active_x - 5)*2):int(maximum_active_x*2 + 1)], 'b')
 
 except:
     try:
-        
+
         # Plot created if the maximum lies on the left edge of the SEIR model plot
-        ax[1].plot(total_time[int(maximum_active_x*2):int((maximum_active_x + 5)*2)], 
-            infected_population[int(maximum_active_x*2):int((maximum_active_x + 5)*2)], 'b')
-    
+        ax[1].plot(total_time[int(maximum_active_x*2):int((maximum_active_x + 5)*2)],
+                   infected_population[int(maximum_active_x*2):int((maximum_active_x + 5)*2)], 'b')
+
     except:
         try:
-            
+
             # Plot created if the maximum lies on the right edge of the SEIR model plot
-            ax[1].plot(total_time[int((maximum_active_x - 5)*2):int(maximum_active_x*2 + 1)], 
-                infected_population[int((maximum_active_x - 5)*2):int(maximum_active_x*2 + 1)], 'b')
-        
+            ax[1].plot(total_time[int((maximum_active_x - 5)*2):int(maximum_active_x*2 + 1)],
+                       infected_population[int((maximum_active_x - 5)*2):int(maximum_active_x*2 + 1)], 'b')
+
         except:
-            
+
             # Plot created if the left and right of the maximum do not exist
-            ax[1].plot(total_time[int(maximum_active_x*2):int(maximum_active_x*2 + 1)], 
-                infected_population[int(maximum_active_x*2):int(maximum_active_x*2 + 1)], 'b')
+            ax[1].plot(total_time[int(maximum_active_x*2):int(maximum_active_x*2 + 1)],
+                       infected_population[int(maximum_active_x*2):int(maximum_active_x*2 + 1)], 'b')
 
 # Sets a limit for the values of the y-axis to zoom in on maximum of infected cases
 ax[1].set_ylim(0, maximum_active_y + max(maximum_active_y*0.1, 10000))
@@ -312,10 +328,11 @@ ax[1].set_xlabel('Time (days)')
 ax[1].set_ylabel('Population')
 
 # Creates arrow pointing to the maximum of the infected cases plot
-ax[1].annotate("max infected cases = " + str(int(maximum_active_y)), xy=(maximum_active_x, maximum_active_y), 
-    xytext=(maximum_active_x - 3, maximum_active_y + max(9000, maximum_active_y*0.06)),
-    arrowprops=dict(arrowstyle="-", connectionstyle="arc3")
-)
+ax[1].annotate("max infected cases = " + str(int(maximum_active_y)), xy=(maximum_active_x, maximum_active_y),
+               xytext=(maximum_active_x - 3, maximum_active_y +
+                       max(9000, maximum_active_y*0.06)),
+               arrowprops=dict(arrowstyle="-", connectionstyle="arc3")
+               )
 
 # Legend makes it easy to compare both plots
 ax[1].legend(['Infected'], loc='best')
