@@ -12,6 +12,7 @@
 3. To run the flask backend as a windows user use,
 
    ` npm run start-api `
+
    For Mac and Linux users use,
 
    ` npm run start-api-2 `
