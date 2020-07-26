@@ -43,7 +43,7 @@ def countries():
         if countries[i][0] != "UK" and countries[i][0] != "Spain" and countries[i][0] != "Netherlands" and countries[i][0] != "Sweden":
             known_countries.append(countries[i][0])
     g.conn.commit()
-    return jsonify()
+    return jsonify(known_countries)
 
 
 @app.route("/scrape/")
