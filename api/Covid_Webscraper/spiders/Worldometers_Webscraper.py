@@ -1,9 +1,6 @@
 import scrapy
 from scrapy.loader import ItemLoader
-try:
-    from Covid_Webscraper.items import CovidWebscraperItem
-except:
-    from Covid_Webscraper.Covid_Webscraper.items import CovidWebscraperItem
+from Covid_Webscraper.items import CovidWebscraperItem
 
 
 # A spider that crawls the worldometers website

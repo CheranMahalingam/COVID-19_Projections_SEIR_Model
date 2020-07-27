@@ -10,8 +10,7 @@ from mpld3 import plugins
 from scipy.integrate import odeint
 import numpy as np
 import matplotlib
-
-path = ""
+import subprocess
 
 matplotlib.use('Agg')
 
@@ -33,7 +32,7 @@ def create_table():
 
 @app.route("/country/", methods=['GET'])
 def countries():
-    os.chdir(path)
+    os.getcwd()
     g.conn = sqlite3.connect('case_data.db')
     g.curr = g.conn.cursor()
     g.curr.execute("SELECT country_name FROM cases_tb")
@@ -48,8 +47,10 @@ def countries():
 
 @app.route("/scrape/")
 def scrape():
-    cmd = "scrapy crawl cases"
-    os.system(cmd)
+    #cmd = "scrapy crawl cases"
+    # os.system(cmd)
+    spider_name = "cases"
+    subprocess.check_output(['scrapy', 'crawl', spider_name])
     return jsonify(time.asctime())
 
 
