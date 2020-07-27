@@ -1,15 +1,10 @@
 # Modelling the Spread of COVID-19 using an SEIR Model
 # Instructions
-1. Open the api.py file located in the api directory and change the 'path' variable to the directory
-   in which the scrapy.cfg is located
-
-   ` path = "********/COVID-19_Projections_SEIR_Model/api/Covid_Webscraper" `
-
-2. Open the terminal and cd into the covid-projections directory
+1. Open the terminal and cd into the covid-projections directory
 
    ` cd *****/COVID-19_Projections_SEIR_Model/covid-projections `
 
-3. To run the flask backend as a windows user use,
+2. To run the flask backend as a windows user use,
 
    ` npm run start-api `
 
@@ -17,15 +12,15 @@
 
    ` npm run start-api-2 `
 
-4. Open a new terminal and cd into the covid-projections directory
+3. Open a new terminal and cd into the covid-projections directory
 
    ` cd *****/COVID-19_Projections_SEIR_Model/covid-projections `
 
-5. To run the web application use,
+4. To run the web application use,
 
    ` npm start `
    
-6. The program will open on port 3000 and is available at http://localhost:3000
+5. The program will open on port 3000 and is available at http://localhost:3000
 
 # SEIR Model
 The model splits the population into four groups. Susceptible (people who are not immune 
