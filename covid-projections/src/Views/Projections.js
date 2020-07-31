@@ -21,7 +21,7 @@ function Projections() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/country").then((res) => {
+    axios.get("http://localhost:80/country").then((res) => {
       const country = res.data;
       let country_list = [{ id: 0, name: "" }];
       let i = 0;
@@ -50,7 +50,7 @@ function Projections() {
     event.preventDefault();
     if (selectedCountry !== "") {
       axios
-        .post("http://localhost:5000/submit", {
+        .post("http://localhost:80/submit", {
           intervalData: selectedInterval,
           countryData: selectedCountry,
         })
@@ -96,7 +96,7 @@ function Projections() {
 
   function handleScrape() {
     setLoading(true);
-    axios.get("http://localhost:5000/scrape/").then((res) => {
+    axios.get("http://localhost:80/scrape/").then((res) => {
       setTime("Data last updated: " + res.data);
       setLoading(false);
     });
