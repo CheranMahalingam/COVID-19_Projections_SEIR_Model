@@ -15,7 +15,7 @@ import subprocess
 matplotlib.use('Agg')
 
 
-app = Flask(__name__)
+application = Flask(__name__)
 cors = CORS(app)
 
 
@@ -207,4 +207,4 @@ def result():
 
 
 if __name__ == '__main__':
-    app.run()
+    application.run()
