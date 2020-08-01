@@ -94,7 +94,7 @@ function Results() {
   ]);
 
   useEffect(() => {
-    axios.get("http://localhost:80/result").then((res) => {
+    axios.get("http://localhost:5000/result").then((res) => {
       let cool = res.data;
       setGraphHTML(cool["graph"]);
       setR0(cool["r0"]);
