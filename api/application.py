@@ -16,7 +16,7 @@ matplotlib.use('Agg')
 
 
 application = Flask(__name__)
-cors = CORS(app)
+cors = CORS(application)
 
 
 def create_table():
@@ -30,7 +30,7 @@ def create_table():
         )""")
 
 
-@app.route("/country/", methods=['GET'])
+@application.route("/country/", methods=['GET'])
 def countries():
     os.getcwd()
     g.conn = sqlite3.connect('case_data.db')
@@ -45,7 +45,7 @@ def countries():
     return jsonify(known_countries)
 
 
-@app.route("/scrape/")
+@application.route("/scrape/")
 def scrape():
     #cmd = "scrapy crawl cases"
     # os.system(cmd)
@@ -54,7 +54,7 @@ def scrape():
     return jsonify(time.asctime())
 
 
-@app.route("/submit", methods=['POST'])
+@application.route("/submit", methods=['POST'])
 def graph():
     if request.method == 'POST':
         interval_data = request.json["intervalData"]
@@ -71,7 +71,7 @@ def graph():
         return jsonify(interval_data)
 
 
-@app.route('/result/', methods=['GET'])
+@application.route('/result/', methods=['GET'])
 def result():
     try:
         g.conn = sqlite3.connect('case_data.db')
