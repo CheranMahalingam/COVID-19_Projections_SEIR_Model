@@ -14,7 +14,6 @@ import subprocess
 
 matplotlib.use('Agg')
 
-
 application = Flask(__name__)
 cors = CORS(application)
 
@@ -30,7 +29,7 @@ def create_table():
         )""")
 
 
-@application.route("/country/", methods=['GET'])
+@application.route("/country/")
 def countries():
     os.getcwd()
     g.conn = sqlite3.connect('case_data.db')
@@ -47,10 +46,8 @@ def countries():
 
 @application.route("/scrape/")
 def scrape():
-    #cmd = "scrapy crawl cases"
-    # os.system(cmd)
     spider_name = "cases"
-    subprocess.check_output(['scrapy', 'crawl', spider_name])
+    subprocess.run(['scrapy', 'crawl', spider_name])
     return jsonify(time.asctime())
 
 
@@ -71,7 +68,7 @@ def graph():
         return jsonify(interval_data)
 
 
-@application.route('/result/', methods=['GET'])
+@application.route('/result/')
 def result():
     try:
         g.conn = sqlite3.connect('case_data.db')
