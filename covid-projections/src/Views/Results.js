@@ -95,15 +95,15 @@ function Results() {
 
   useEffect(() => {
     axios.get("http://localhost:5000/result").then((res) => {
-      let cool = res.data;
-      setGraphHTML(cool["graph"]);
-      setR0(cool["r0"]);
-      setRt(cool["rt"]);
-      setMaxActive(cool["max_active_cases"]);
-      setSusceptibleState(cool["susceptible_state"]);
-      setExposedState(cool["exposed_state"]);
-      setInfectedState(cool["infected_state"]);
-      setRecoveredState(cool["recovered_state"]);
+      let data = res.data;
+      setGraphHTML(data["graph"]);
+      setR0(data["r0"]);
+      setRt(data["rt"]);
+      setMaxActive(data["max_active_cases"]);
+      setSusceptibleState(data["susceptible_state"]);
+      setExposedState(data["exposed_state"]);
+      setInfectedState(data["infected_state"]);
+      setRecoveredState(data["recovered_state"]);
       setLoading(false);
     });
   }, []);

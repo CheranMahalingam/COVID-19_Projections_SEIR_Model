@@ -21,7 +21,7 @@ function Projections() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/country").then((res) => {
+    axios.get("http://localhost:5000/country/").then((res) => {
       const country = res.data;
       let country_list = [{ id: 0, name: "" }];
       let i = 0;
@@ -63,35 +63,35 @@ function Projections() {
   }
 
   function handleInterval(newValue, key) {
-    const cool = [...selectedInterval];
-    const index = cool.indexOf(key);
-    cool[index] = { ...key };
-    cool[index].length = newValue;
-    setSelectedInterval(cool);
+    const interval = [...selectedInterval];
+    const index = interval.indexOf(key);
+    interval[index] = { ...key };
+    interval[index].length = newValue;
+    setSelectedInterval(interval);
   }
 
   function handleRestriction(newValue, key) {
-    const cool = [...selectedInterval];
-    const index = cool.indexOf(key);
-    cool[index] = { ...key };
-    cool[index].restriction = newValue;
-    setSelectedInterval(cool);
+    const interval = [...selectedInterval];
+    const index = interval.indexOf(key);
+    interval[index] = { ...key };
+    interval[index].restriction = newValue;
+    setSelectedInterval(interval);
   }
 
   function handleAddition() {
-    const cool = [...selectedInterval];
-    cool.push({
+    const interval = [...selectedInterval];
+    interval.push({
       id: selectedInterval.length + 1,
       length: 0,
       restriction: "None",
     });
-    setSelectedInterval(cool);
+    setSelectedInterval(interval);
   }
 
   function handleDeletion() {
-    const cool = [...selectedInterval];
-    cool.pop();
-    setSelectedInterval(cool);
+    const interval = [...selectedInterval];
+    interval.pop();
+    setSelectedInterval(interval);
   }
 
   function handleScrape() {
