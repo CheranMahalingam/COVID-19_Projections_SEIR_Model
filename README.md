@@ -77,23 +77,30 @@
 
    `cd *****/COVID-19_Projections_SEIR_Model/covid-projections`
 
-2. To run the flask backend as a windows user use,
+2. Install dependencies using npm
 
-   `npm run start-api`
+   `npm install`
 
-   For Mac and Linux users use,
+3. Install dependencies using pip
 
-   `npm run start-api-2`
+   ```
+   cd ../api
+   pip3 install -r requirements.txt
+   ```
 
-3. Open a new terminal and cd into the covid-projections directory
+4. To run the flask backend use,
+
+   `flask run`
+
+5. Open a new terminal and cd into the covid-projections directory
 
    `cd *****/COVID-19_Projections_SEIR_Model/covid-projections`
 
-4. To run the web application use,
+6. To run the web application use,
 
    `npm start`
 
-5. The program will open on port 3000 and is available at http://localhost:3000
+7. The program will open on port 3000 and is available at http://localhost:3000
 
 # SEIR Model
 
