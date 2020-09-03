@@ -1,5 +1,10 @@
 # Modelling the Spread of COVID-19 using an SEIR Model
 
+<p align="center">
+  <img src="images/SEIR_output.png">
+</p>
+
+
 # Instructions to deploy this project on an EC2 instance
 
 1. Launch a new instance
