@@ -15,7 +15,7 @@ itemadapter==0.1.0
 itsdangerous==1.1.0
 Jinja2==2.11.2
 kiwisolver==1.2.0
-lxml==4.5.2
+lxml==4.6.2
 MarkupSafe==1.1.1
 matplotlib==3.2.2
 mpld3==0.5.1
