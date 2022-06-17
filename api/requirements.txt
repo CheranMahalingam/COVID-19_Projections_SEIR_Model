@@ -34,7 +34,7 @@ python-dateutil==2.8.1
 python-dotenv==0.14.0
 queuelib==1.5.0
 scipy==1.5.2
-Scrapy==2.2.1
+Scrapy==2.6.1
 service-identity==18.1.0
 six==1.15.0
 Twisted==20.3.0
